@@ -1,6 +1,7 @@
 import type { ComponentProps } from 'react';
 import type { Feather } from '@expo/vector-icons';
 import type { BoxType } from '../types/box';
+import { boxTypeColors } from './theme';
 
 type FeatherIconName = ComponentProps<typeof Feather>['name'];
 
@@ -17,28 +18,28 @@ export const BOX_TYPES: Record<BoxType, BoxTypeMeta> = {
     type: 'letter',
     label: 'Hộp Tâm Sự',
     description: 'Ghi lại cảm xúc, suy nghĩ hiện tại của bạn',
-    color: '#4F46E5',
+    color: boxTypeColors.letter,
     icon: 'edit-3',
   },
   goal: {
     type: 'goal',
     label: 'Hộp Mục Tiêu',
     description: 'Đặt mục tiêu và hẹn ngày đánh giá lại',
-    color: '#818CF8',
+    color: boxTypeColors.goal,
     icon: 'target',
   },
   memory: {
     type: 'memory',
     label: 'Hộp Kỷ Niệm',
     description: 'Lưu giữ một khoảnh khắc đáng nhớ',
-    color: '#64748B',
+    color: boxTypeColors.memory,
     icon: 'image',
   },
   decision: {
     type: 'decision',
     label: 'Hộp Nhật Ký Quyết Định',
     description: 'Ghi lại quyết định để đánh giá lại sau này',
-    color: '#334155',
+    color: boxTypeColors.decision,
     icon: 'compass',
   },
 };
