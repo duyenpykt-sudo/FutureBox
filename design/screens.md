@@ -2,52 +2,62 @@
 
 ## Design System
 
+> Phong cách: **Dark Glassmorphism + Orange Accent**. Nguồn chuẩn đầy đủ (states, motion, responsive) ở [`design/uiuxguides.md`](./uiuxguides.md) — phần dưới là tóm tắt token dùng nhanh.
+
 ### Màu sắc (Color Palette)
 
-| Token | Hex | Sử dụng |
+| Token | Hex / Value | Sử dụng |
 |---|---|---|
-| `primary` | `#6366F1` | Nút chính, FAB, link, trạng thái selected |
-| `primary-light` | `#E0E7FF` | Background badge/chip đã chọn, banner thông tin |
-| `primary-dark` | `#4F46E5` | Pressed state của primary |
-| `background` | `#F5F5F7` | Nền màn hình |
-| `surface` | `#FFFFFF` | Nền card, input |
-| `text-primary` | `#18181B` | Văn bản chính |
-| `text-secondary` | `#71717A` | Văn bản phụ, placeholder, caption, đếm ngược |
-| `border` | `#E4E4E7` | Viền input, divider |
-| `success` | `#22C55E` | Trạng thái "Yes"/đạt mục tiêu, celebration |
-| `danger` | `#EF4444` | Nút xóa, lỗi validation |
-| `warning` | `#F59E0B` | Banner nhắc quyền notification |
+| `accent` | `#FF5A1F` | Nút chính, FAB, toggle ON, slider fill, link, trạng thái selected |
+| `accent-pressed` | `#E04A12` | Pressed state của accent |
+| `accent-soft` | `rgba(255,90,31,0.16)` | Nền badge/chip active, glow |
+| `bg-base` | `#0E0F12` | Nền nền tảng (dưới gradient/ảnh) |
+| `bg-gradient` | `#14161B → #0A0B0D` | Gradient nền màn hình |
+| `bg-overlay` | `rgba(8,9,11,0.55)` | Lớp phủ tối trên ảnh nền |
+| `glass-surface` | `rgba(255,255,255,0.08)` | Nền card kính (kết hợp blur) |
+| `glass-surface-strong` | `rgba(255,255,255,0.12)` | Card nổi bật / modal |
+| `glass-border` | `rgba(255,255,255,0.14)` | Viền card, input |
+| `text-primary` | `#FFFFFF` | Văn bản chính |
+| `text-secondary` | `rgba(255,255,255,0.64)` | Văn bản phụ, placeholder, caption, đếm ngược |
+| `text-tertiary` | `rgba(255,255,255,0.40)` | Placeholder mờ, hộp "Đã mở" |
+| `divider` | `rgba(255,255,255,0.10)` | Đường phân cách |
+| `success` | `#34C759` | Trạng thái "Yes"/đạt mục tiêu, celebration |
+| `danger` | `#FF4D4F` | Nút xóa, lỗi validation |
+| `warning` | `#FFB020` | Banner nhắc quyền notification |
 
-### Màu icon theo loại hộp (sắc độ của primary + grayscale)
+### Màu icon theo loại hộp (hue riêng cho nhận diện, đặt trong vòng tròn kính)
 
 | Loại hộp | Màu | Hex | Icon (Feather) |
 |---|---|---|---|
-| Hộp Tâm Sự | Indigo đậm | `#4F46E5` | `edit-3` |
-| Hộp Mục Tiêu | Indigo nhạt | `#818CF8` | `target` |
-| Hộp Kỷ Niệm | Xám trung | `#64748B` | `image` |
-| Hộp Nhật Ký Quyết Định | Xám đậm | `#334155` | `compass` |
+| Hộp Tâm Sự | Cam (accent) | `#FF5A1F` | `edit-3` |
+| Hộp Mục Tiêu | Teal | `#2DD4BF` | `target` |
+| Hộp Kỷ Niệm | Tím | `#A78BFA` | `image` |
+| Hộp Nhật Ký Quyết Định | Xanh thép | `#60A5FA` | `compass` |
 
 ### Typography (Inter)
 
 | Style | Size/Line height | Weight | Sử dụng |
 |---|---|---|---|
+| Display | 28/34 | 700 Bold | Số liệu nổi bật, tên hộp ở Open Box |
 | H1 | 24/32 | 700 Bold | Tiêu đề màn hình |
 | H2 | 18/24 | 600 Semibold | Tiêu đề section, tên hộp |
 | Body | 16/24 | 400 Regular | Nội dung chính |
 | Body Medium | 16/24 | 500 Medium | Label, button text |
 | Caption | 14/20 | 400 Regular | Helper text, timestamp, character counter |
+| Overline | 12/16 | 600 Semibold, UPPERCASE | Nhãn nhỏ phụ ("WELCOME BACK") |
 
-### Spacing, Radius & Shadow
+### Spacing, Radius & Glass
 
-- Spacing scale (8pt grid): 4, 8, 12, 16, 24, 32, 48
-- Border radius: 8px (button/input/chip), 12px (card), 28px (FAB tròn)
-- Card shadow: `0px 1px 3px rgba(0,0,0,0.08)`
+- Spacing scale (8pt grid): 4, 8, 12, 16, 20, 24, 32, 48; margin ngang màn hình 20px
+- Border radius: 12px (input/chip), 16px (button), 24px (card), bo tròn hết cỡ (pill/FAB)
+- Glass card: `BlurView (dark, intensity 24–40)` + nền `glass-surface` + viền `1px glass-border`
+- Card shadow: `shadowColor #000, opacity 0.35, radius 24, offset {0,12}` (Android `elevation 8`)
 
 ### Animation Timing
 
-- Transition cơ bản (focus, press, fade): 200-300ms, easing `ease-out`
+- Vi tương tác (press/toggle): 120-200ms; transition (focus, fade): 200-300ms, easing `ease-out`
 - Unlock animation (Open Box): ~1.5s, dùng `react-native-reanimated`
-- Confetti: 2-3s, dùng `lottie-react-native` hoặc `react-native-confetti-cannon`
+- Confetti: 2-3s, dùng `lottie-react-native` hoặc `react-native-confetti-cannon` (hạt: accent + success + trắng)
 
 ---
 

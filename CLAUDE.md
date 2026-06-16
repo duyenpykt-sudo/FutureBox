@@ -307,3 +307,32 @@ Main: Update status → All features complete ✓
 - Người dùng có thể linh hoạt điều chỉnh quy trình nếu cần
 - Trong trường hợp emergency fix, có thể skip một số bước nhưng phải document lại
 - Luôn maintain PROJECT_STATUS.md để track progress
+
+---
+
+## Cấu trúc dự án (cấp 1-2)
+
+```
+├── App.tsx, index.ts        # Entry point (React Native + Expo)
+├── app.json                 # Cấu hình Expo
+├── PRD.md                   # Product Requirements Document
+├── PROJECT_STATUS.md        # Theo dõi tiến độ qua các giai đoạn
+├── common_errors.md         # Log lỗi & cách sửa (/learn-by-mistake)
+├── design/
+│   ├── uiuxguides.md        # ⭐ Design system chuẩn (Dark Glassmorphism + cam)
+│   ├── screens.md           # Mô tả screens + tóm tắt design tokens
+│   ├── architecture.md      # Kiến trúc hệ thống
+│   ├── database/            # Schema (ERD, table)
+│   └── flows/               # Activity diagrams theo tính năng
+└── src/
+    ├── components/          # UI components dùng chung
+    ├── constants/           # theme.ts (design tokens chuẩn), boxTypes, ...
+    ├── navigation/          # Cấu hình điều hướng
+    ├── screens/             # Màn hình theo tính năng
+    ├── services/            # Storage, notification, ...
+    ├── store/               # State management (zustand)
+    ├── types/               # Type definitions
+    └── utils/               # Hàm tiện ích
+```
+
+- **Design tokens:** nguồn chuẩn là `src/constants/theme.ts` (khớp `design/uiuxguides.md`). `designTokens.ts` chỉ là shim tương thích, sẽ migrate dần.
